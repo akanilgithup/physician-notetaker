@@ -3,10 +3,18 @@ import spacy
 import scispacy
 import torch
 from transformers import pipeline
+import subprocess
 
 st.title("Physician Notetaker")
 
-nlp = spacy.load("en_core_web_md")
+model_name = "en_core_web_md"
+try:
+    nlp = spacy.load(model_name)
+except OSError:
+    st.warning(f"{model_name} not found. Downloading now...")
+    subprocess.run(["python", "-m", "spacy", "download", model_name])
+    nlp = spacy.load(model_name)
+
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 uploaded_file = st.file_uploader("Upload a transcript file", type=["txt"])
