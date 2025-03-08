@@ -1,6 +1,7 @@
 streamlit
 scispacy
 spacy
-torch
+torch==2.0.1
 transformers
+numpy==1.23.5
 spacy-langdetect
