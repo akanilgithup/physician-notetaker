@@ -1,0 +1,7 @@
+streamlit
+scispacy
+spacy
+en-core-web-md
+en-core-sci-md
+transformers
+torch
