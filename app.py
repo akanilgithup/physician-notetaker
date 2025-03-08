@@ -6,9 +6,13 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Dict, List
 
-# Load SciSpacy medical NLP model
+
 print("Loading SciSpacy model...")
-nlp = spacy.load("en_core_sci_sm")  # Try "en_core_sci_md" for better accuracy
+
+
+nlp = spacy.load("en_core_web_md")
+
+
 linker = EntityLinker(resolve_abbreviations=True, name="umls")
 nlp.add_pipe(linker)
 
